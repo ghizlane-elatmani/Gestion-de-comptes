@@ -1,13 +1,17 @@
 package io.javacode.VotreBanque.entities;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
 
+@Entity
 public class Client implements Serializable {
 
+    @Id @GeneratedValue
     private Long code;
     private String nom;
     private String email;
+    @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
     private Collection<Compte> comptes;
 
     public Client() {

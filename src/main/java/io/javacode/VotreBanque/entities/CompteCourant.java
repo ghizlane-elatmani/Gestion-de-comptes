@@ -1,7 +1,11 @@
 package io.javacode.VotreBanque.entities;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 import java.util.Date;
 
+@Entity
+@DiscriminatorValue("CC")
 public class CompteCourant extends Compte {
 
     private double decouvert;
