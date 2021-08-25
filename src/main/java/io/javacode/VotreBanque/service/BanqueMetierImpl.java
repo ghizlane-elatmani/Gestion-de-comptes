@@ -22,7 +22,7 @@ public class BanqueMetierImpl implements IBanqueMetier{
 
     @Override
     public Compte consulterCompte(String codeCpte) {
-        Compte cp = compteRepository.findOne(codeCpte);
+        Compte cp = compteRepository.getById(codeCpte);
         if(cp == null) throw new RuntimeException("Compte introuvable");
         return cp;
     }
@@ -58,7 +58,7 @@ public class BanqueMetierImpl implements IBanqueMetier{
 
     @Override
     public Page<Operation> listOperation(String codeCpte, int page, int size) {
-        return operationRepository.listOperation(codeCpte, new PageRequest(page, size));
+        return operationRepository.listOperation(codeCpte, PageRequest.of(page, size));
     }
 
 }
