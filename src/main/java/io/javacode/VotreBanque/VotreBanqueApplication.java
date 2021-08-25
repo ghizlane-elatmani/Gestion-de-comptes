@@ -4,6 +4,7 @@ import io.javacode.VotreBanque.dao.ClientRepository;
 import io.javacode.VotreBanque.dao.CompteRepository;
 import io.javacode.VotreBanque.dao.OperationRepository;
 import io.javacode.VotreBanque.entities.*;
+import io.javacode.VotreBanque.service.IBanqueMetier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -21,6 +22,8 @@ public class VotreBanqueApplication implements CommandLineRunner {
 	private CompteRepository compteRepository;
 	@Autowired
 	private OperationRepository operationRepository;
+	@Autowired
+	private IBanqueMetier banqueMetier;
 
 	public static void main(String[] args) {
 		SpringApplication.run(VotreBanqueApplication.class, args);
@@ -44,5 +47,6 @@ public class VotreBanqueApplication implements CommandLineRunner {
 		operationRepository.save(new Versement(new Date(), 2300, cp2));
 		operationRepository.save(new Retrait(new Date(), 3000, cp2));
 
+		banqueMetier.verser("c1", 111111);
 	}
 }
