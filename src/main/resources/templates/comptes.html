@@ -12,7 +12,7 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">Consultation d'un compte</div>
                 <div class="panel-body">
-                    <form th:action="@{/consultercompte}" method="get">
+                    <form th:action="@{/consulterCompte}" method="get">
                         <div>
                             <label>Code Cpte:</label>
                             <input type="text" name="codeCompte"/>
@@ -22,19 +22,36 @@
                 </div>
             </div>
 
-            <div class="panel panel-primary">
+            <div class="panel panel-primary" th:if="${compte}">
                 <div class="panel-heading">Informations sur le compte</div>
-                <div class="panel-body"></div>
+                <div class="panel-body">
+                    <div>
+                        <label>Code:</label>
+                        <label th:text="${compte.codeCompte}"></label>
+                    </div>
+                    <div>
+                        <label>Solde:</label>
+                        <label th:text="${compte.solde}"></label>
+                    </div>
+                    <div>
+                        <label>Date Création:</label>
+                        <label th:text="${compte.dateCreation}"></label>
+                    </div>
+                    <div>
+                        <label>Type:</label>
+                        <label th:text="${compte.class.simpleName}"></label>
+                    </div>
+                </div>
             </div>
         </div>
 
         <div class="col-md-6">
-            <div class="panel panel-primary">
+            <div class="panel panel-primary" th:if="${compte}">
                 <div class="panel-heading">Opérations sur le compte</div>
                 <div class="panel-body"></div>
             </div>
 
-            <div class="panel panel-primary">
+            <div class="panel panel-primary" th:if="${compte}">
                 <div class="panel-heading">Liste des opérations</div>
                 <div class="panel-body"></div>
             </div>

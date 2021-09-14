@@ -18,10 +18,14 @@ public class BanqueController {
         return "comptes";
     }
 
-    @RequestMapping("/consultercompte")
+    @RequestMapping("/consulterCompte")
     public String consulter(Model model, String codeCompte){
-        Compte cp = banqueMetier.consulterCompte(codeCompte);
-        model.addAttribute("compte", cp);
+        try {
+            Compte cp = banqueMetier.consulterCompte(codeCompte);
+            model.addAttribute("compte", cp);
+        } catch (Exception e){
+            model.addAttribute("exception", e);
+        }
         return "comptes";
     }
 
