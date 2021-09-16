@@ -33,6 +33,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/saveOperation")
                 .hasRole("ADMIN");
+
+        http.exceptionHandling().accessDeniedPage("/403");
     }
 
 
